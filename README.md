@@ -1,6 +1,6 @@
 # dashboard-vue
  
-When you clone this project from GtHub, run the following commands in order.
+When you clone this project from GitHub, run the following commands in order.
 
 ```
 npm install
