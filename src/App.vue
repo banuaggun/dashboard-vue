@@ -1,43 +1,45 @@
 <template>
   <div id="app">
+    <Sidebar />
     <div class="wrapper">
-      <aside>
-        <div class="sidebar">
-          <nav>
-            <RouterLink to="/">Overview</RouterLink>
-            <RouterLink to="/products">Products</RouterLink>
-            <RouterLink to="/statistics">Statistics</RouterLink>
-            <RouterLink to="/signout">Sign Out</RouterLink>
-          </nav>
-        </div>
-      </aside>
       <div class="sidebar__content">
         <RouterView />
       </div>
     </div>
   </div>
 </template>
+<script>
+import Sidebar from './components/Sidebar.vue'
+export default {
+ name:"app",
+  components:{Sidebar},
+}
+</script>
 
 <style scoped>
-.wrapper {
-  display: flex;
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
 }
 
-.sidebar {
-  /* Sidebar ile ilgili stiller burada yer alır */
-  position: absolute;
-  left: 0;
-  border: 1px solid green;
+#app{
+  display:flex;
+}
+
+main{
+  flex:1 1 0;
+  padding:2rem;
+}
+
+@media (max-width:1024px){
+  main{
+    padding-left:6rem;
+  }
 }
 
 .sidebar__content {
   margin-left: 80px;
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
 </style>
