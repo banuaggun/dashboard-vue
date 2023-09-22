@@ -1,45 +1,31 @@
 <template>
   <div id="app">
-    <Sidebar />
     <div class="wrapper">
-      <div class="sidebar__content">
+      <Sidebar />
+      <main>
         <RouterView />
-      </div>
+      </main>
     </div>
   </div>
 </template>
+
 <script>
 import Sidebar from './components/Sidebar.vue'
 export default {
- name:"app",
-  components:{Sidebar},
+  name: "app",
+  components: { Sidebar },
 }
 </script>
 
 <style scoped>
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
-
 #app{
   display:flex;
 }
 
 main{
+  display:flex;
   flex:1 1 0;
-  padding:2rem;
-}
-
-@media (max-width:1024px){
-  main{
-    padding-left:6rem;
-  }
-}
-
-.sidebar__content {
-  margin-left: 80px;
+  border:1px solid green;
 }
 
 </style>
