@@ -1,13 +1,6 @@
 <template>
-  statistics page
+  <main>
+    page
+  </main>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>

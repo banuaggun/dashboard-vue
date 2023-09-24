@@ -1,13 +1,6 @@
 <template>
-  sign out
+  <main>
+    sign out
+  </main>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
