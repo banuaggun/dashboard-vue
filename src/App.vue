@@ -1,31 +1,32 @@
 <template>
-  <div id="app">
-    <div class="wrapper">
-      <Sidebar />
-      <main>
-        <RouterView />
-      </main>
-    </div>
-  </div>
+	<div class="app" id="app">
+		<Sidebar />
+
+		<!-- Content -->
+		<router-view />
+	</div>
 </template>
 
-<script>
+<script setup>
 import Sidebar from './components/Sidebar.vue'
-export default {
-  name: "app",
-  components: { Sidebar },
-}
+
 </script>
 
-<style scoped>
-#app{
-  display:flex;
+<style>
+.app {
+	display: flex;
 }
 
-main{
-  display:flex;
-  flex:1 1 0;
-  border:1px solid green;
+main {
+	flex: 1 1 0;
+	padding: 2rem;
 }
+
+@media (max-width: 1024px) {
+	main{
+    padding-left: 6rem;
+  }
+}
+	
 
 </style>
