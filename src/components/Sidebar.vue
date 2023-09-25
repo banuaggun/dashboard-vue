@@ -14,44 +14,23 @@
 		</div>
 
 		
-		<div class="menu">
-			<RouterLink to="/" class="menu__button">
-				<span class="icon">
-          <i class="ph-fill ph-house"></i>
-        </span>
-				<span class="menu__text">Overview</span>
-			</RouterLink>
-			<RouterLink to="/products" class="menu__button">
-				<span class="icon">
-          <i class="ph-fill ph-cube"></i>
-        </span>
-				<span class="menu__text">Products</span>
-			</RouterLink>
-			<RouterLink to="/statistics" class="menu__button">
-				<span class="icon">
-          <i class="ph-fill ph-trend-up"></i>
-        </span>
-				<span class="menu__text">Statistics</span>
-			</RouterLink>
+		<div class="menu" v-for="item in sidebarData" :key="item.id">
 		
-		</div>
+					<RouterLink :to="item.to" class="menu__button">
+						<span class="icon">
+							<i :class="item.icon"></i>
+						</span>
+						<span class="menu__text">{{item.text}}</span>
+					</RouterLink>
+		</div>		
 
-		<div class="flex"></div>
-		
-		<div class="menu">
-			<RouterLink to="/signout" class="menu__button">
-				<span class="icon">
-          <i class="ph-fill ph-sign-out"></i>
-        </span>
-				<span class="menu__text">Sign Out</span>
-			</RouterLink>
-		</div>
 	</aside>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import logoURL from '../assets/color.jpg'
+import sidebarData from '../assets/data/sidebarData.json'
 
 const is__expanded = ref(localStorage.getItem("is_expanded") === "true")
 
@@ -87,6 +66,7 @@ aside .logo {
 
 aside	img {
 	width: 2rem;
+	height:1.5rem;
 }
 	
 .menu__toggle__wrap {
@@ -124,6 +104,11 @@ aside	img {
 	margin: 0 -1rem;
 }
 
+.menu:last-child{
+	position:absolute;
+	bottom:0;
+}
+
 .menu__button {
 	display: flex;
 	align-items: center;
@@ -149,16 +134,6 @@ aside	img {
 .menu__button	.icon, .menu__text {
 	color: var(--primary);
 }
-					
-.footer {
-	opacity: 0;
-	transition: opacity 0.3s ease-in-out;
-}
-	
-.footer	p {
-	font-size: 0.875rem;
-	color: var(--grey);
-}
 	
 .is__expanded {
 	width: var(--sidebar__width);
@@ -179,17 +154,5 @@ aside	img {
 .menu__button .icon {
 	margin-right: 1rem;
 }
-	
 
-.footer {
-	opacity: 0;
-}
-	
-
-@media (max-width: 1024px) {
-  .footer{
-		position: absolute;
-		z-index: 99;
-	}
-}
 </style>
