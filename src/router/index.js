@@ -5,7 +5,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/overview',
       name: 'overview',
       component: Overview
     },
@@ -24,7 +24,8 @@ const router = createRouter({
       name: 'signout',
       component: () => import('../views/SignOut.vue')
     }
-  ]
+  ],
+  linkActiveClass: 'active'
 })
 
 export default router

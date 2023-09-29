@@ -16,12 +16,12 @@
 		
 		<div class="menu" v-for="item in sidebarData" :key="item.id">
 		
-					<RouterLink :to="item.to" class="menu__button">
+					<router-link :to="item.to" class="menu__button">
 						<span class="icon">
 							<i :class="item.icon"></i>
 						</span>
 						<span class="menu__text">{{item.text}}</span>
-					</RouterLink>
+					</router-link>
 		</div>		
 
 	</aside>
@@ -124,7 +124,15 @@ aside	img {
 }
 
 .menu__button:hover {
-	background-color: var(--dark-alt);
+	color:var(--dark);
+	background-color: var(--dark__alt);
+}
+
+.menu__button.active,
+.menu__button.active .menu__text,
+.menu__button.active .icon{
+	color:#000;
+	background-color:lightgreen;
 }
 
 .menu__button	.icon, .menu__text {
