@@ -1,9 +1,5 @@
 <template>
 	<aside :class="`${is__expanded ? 'is__expanded' : ''}`">
-		
-    <div class="logo">
-			<img :src="logoURL" alt="Vue" /> 
-		</div>
 
 		<div class="menu__toggle__wrap">
 			<button class="menu__toggle__arrow" @click="ToggleMenu">
@@ -13,16 +9,20 @@
 			</button>
 		</div>
 
+		<div class="menu__area">
 		
-		<div class="menu" v-for="item in sidebarData" :key="item.id">
+<div class="menu" v-for="(item, index) in sidebarData" :key="item.id">
 		
 					<router-link :to="item.to" class="menu__button">
 						<span class="icon">
-							<i :class="item.icon"></i>
+							 <img v-if="index === 0" :src="logoURL" alt="logo" />
+							<i v-else :class="item.icon"></i>
 						</span>
 						<span class="menu__text">{{item.text}}</span>
 					</router-link>
-		</div>		
+		</div>
+		</div>
+				
 
 	</aside>
 </template>
@@ -30,7 +30,7 @@
 <script setup>
 import { ref } from 'vue'
 import logoURL from '../assets/color.jpg'
-import sidebarData from '../assets/data/sidebarData.json'
+import sidebarData from '../assets/data/sidebarData.js'
 
 const is__expanded = ref(localStorage.getItem("is_expanded") === "true")
 
@@ -41,6 +41,11 @@ const ToggleMenu = () => {
 </script>
 
 <style scoped>
+.icon img{
+	width:2rem;
+	height:2rem;
+	border-radius:50%;
+}
 aside {
   display: flex;
 	flex-direction: column;
@@ -50,23 +55,11 @@ aside {
 
 	width: calc(2rem + 32px);
 	overflow: hidden;
-	min-height: 100vh;
+	margin-top:80px;
+	min-height: calc(100vh - 80px);
 	padding: 1rem;
 
 	transition: 0.2s ease-in-out;
-}
-	
-aside .flex {
-	flex: 1 1 0%;
-}
-
-aside .logo {
-	margin-bottom: 1rem;
-}
-
-aside	img {
-	width: 2rem;
-	height:1.5rem;
 }
 	
 .menu__toggle__wrap {
@@ -75,7 +68,7 @@ aside	img {
 	margin-bottom: 1rem;
 		
   position: relative;
-	top: 0;
+	top: 1rem;
 	transition: 0.2s ease-in-out;
 }
 	
@@ -83,8 +76,14 @@ aside	img {
 	transition: 0.2s ease-in-out;
 }
 
+.menu__area{
+	margin-top:1rem;
+}
+
+
 .menu__toggle__arrow	.icon,
-.menu__button	.icon{
+.menu__button	.icon,
+.menu__area__logo__image{
 	font-size: 2rem;
 	color: var(--light);
 	transition: 0.2s ease-out;
@@ -118,7 +117,13 @@ aside	img {
 	padding: 0.5rem 1rem;
 }
 
-.menu__text {
+.menu__area__logo{
+	display:flex;
+	align-items:center;
+}
+
+.menu__text,
+.menu__area__logo__name span {
 	color: var(--light);
 	transition: 0.2s ease-in-out;
 }
@@ -139,7 +144,8 @@ aside	img {
 	color: var(--primary);
 }
 
-.menu__button	.icon, .menu__text {
+.menu__button	.icon, .menu__text,
+.menu__area__logo__name span {
 	color: var(--primary);
 }
 	
@@ -148,18 +154,20 @@ aside	img {
 }
 
 .is__expanded	.menu__toggle__wrap {
-	top: -3rem;
+	top: 1rem;
 }
 
 .is__expanded .menu__toggle__arrow {
 	transform: rotate(-180deg);
 }
 		
-.menu__button .menu__text {
+.menu__button .menu__text,
+.menu__area__logo__name {
 	opacity: 1;
 }
 
-.menu__button .icon {
+.menu__button .icon,
+.menu__area__logo__image {
 	margin-right: 1rem;
 }
 
