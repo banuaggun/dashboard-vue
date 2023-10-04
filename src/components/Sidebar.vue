@@ -52,7 +52,8 @@ aside {
 
 	background-color: var(--dark);
 	color: var(--light);
-
+	position:absolute;
+	top:0;
 	width: calc(2rem + 32px);
 	overflow: hidden;
 	margin-top:80px;

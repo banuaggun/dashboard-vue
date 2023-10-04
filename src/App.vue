@@ -1,13 +1,17 @@
 <template>
 	<div class="app" id="app">
-		<Sidebar />
+		<Topnav />
 
+		<Sidebar />
+				<div class="app__content">
 		<!-- Content -->
 		<router-view />
+		</div>
 	</div>
 </template>
 
 <script setup>
+import Topnav from './components/Topnav.vue'
 import Sidebar from './components/Sidebar.vue'
 
 </script>
@@ -15,11 +19,15 @@ import Sidebar from './components/Sidebar.vue'
 <style>
 .app {
 	display: flex;
+	flex-direction: column;
 }
 
-main {
-	flex: 1 1 0;
-	padding: 2rem;
+.app__content{
+	margin-left:calc(2rem + 32px);
+}
+
+.is__expanded + .app__content{
+	margin-left:var(--sidebar__width);
 }
 
 @media (max-width: 1024px) {
