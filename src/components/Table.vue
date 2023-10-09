@@ -4,7 +4,7 @@
       <tr>
         <th v-for="key in columns"
           @click="sortBy(key)"
-          :class="{ active: sortKey == key }">
+          :class="{ active: sortKey == key }" :key="key">
           {{ capitalize(key) }}
           <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
           </span>
@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in columns">
+      <tr v-for="entry in filteredData" :key="entry">
+        <td v-for="key in columns" :key="key">
           {{entry[key]}}
         </td>
       </tr>
