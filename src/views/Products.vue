@@ -1,8 +1,14 @@
 <template>
   <div class="products">
-    <div class="products__search">
-      <input type="search" name="query" v-model="searchQuery" />
+    <div class="products__top">
+      <div class="products__top__search">
+        <input type="search" name="query" v-model="searchQuery" />
+      </div>
+      <div class="products__top__add">
+        <Add/>
+      </div>
     </div>
+    
     <div class="products__table">
       <Table :data="tableData" :columns="tableColumns" :filter-key="searchQuery" />
     </div>
@@ -10,8 +16,10 @@
 </template>
 <script setup>
 import Table from '../components/Table.vue'
+import Add from '../components/Add.vue'
 import {tableData, tableColumns} from '../assets/data/products.js'
 import {ref} from 'vue'
+
 
 const searchQuery = ref('')
 
@@ -22,21 +30,34 @@ const searchQuery = ref('')
   min-height:calc(100vh - 80px);
 }
 
-.products__search{
-  width:100%;
-  height:52px;
-  border:1px solid mediumvioletred;
-  margin:30px auto;
+.products__top{
+  margin:0 40px;
+  width:calc(100% - 80px);
+  border:1px solid green;
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
 }
 
-.products__search input{
-  width:60%;
-  margin:0 30px;
+
+.products__top__search{
+  width:50%;
+}
+
+.products__top__search input{
+  width:100%;
   height:36px;
   border-radius:12px;
   border:2px solid lightslategray;
   outline:none;
   padding:0 12px;
+}
+
+.products__top__add{
+  width:50%;
+  display:flex;
+  justify-content:flex-end;
 }
   
 </style>
