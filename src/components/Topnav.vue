@@ -12,15 +12,65 @@
     </div>
 
     <div class="topnav__right">
-      <i class="ph-thin ph-bell"></i>
-      <i class="ph-thin ph-chat-circle-text"></i>
+      <div class="dropdown" @mouseover="showMenu = true" @mouseleave="showMenu = false" id="notifications">
+        <button>
+          <i class="ph-thin ph-bell"></i>
+        </button>
+        <DropdownMenuItem v-if="showMenu" class="dropdown-menu" id="notifications"  ref="notifications" />
+      </div>
+      
+      <div class="dropdown" @mouseover="showItem = true" @mouseleave="showItem = false" id="messages">
+        <button>
+          <i class="ph-thin ph-chat-circle-text"></i>
+        </button>
+           <DropdownMenuItem v-if="showItem" class="dropdown-menu" id="messages" ref="messages" />
+        
+      </div>
+ 
+      
     </div>
     
   </div>
 </template>
 <script>
+import DropdownMenuItem from './DropdownMenuItem.vue'
+export default{
+  components:{
+    DropdownMenuItem
+  },
+  data(){
+    return{
+      showMenu:false,
+      showItem:false
+    }
+  }
+}
 </script>
 <style>
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+#notifications.dropdown-menu{
+  width:300px;
+  height:300px;
+  top:70px;
+  right:80px;
+}
+
+#messages.dropdown-menu{
+  width:300px;
+  height:300px;
+  top:70px;
+  right:40px;
+}
+
+.dropdown-menu{
+  position:absolute;
+  border:1px solid green;
+
+  z-index:9999;
+}
   .topnav{
     width:100%;
     top:0;
@@ -28,7 +78,6 @@
     height:80px;
     background-color:lemonchiffon;
     display:flex;
-    overflow:hidden;
     flex:1 1 1;
   }
 
