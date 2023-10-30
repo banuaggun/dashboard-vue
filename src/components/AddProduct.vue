@@ -1,5 +1,7 @@
 <script>
+import BaseInput from './BaseInput.vue'
 export default {
+  components:{BaseInput},
   data() {
     return {
       open: false
@@ -9,26 +11,30 @@ export default {
 </script>
 
 <template>
-  <button @click="open = true" class="add">
-    <span>+</span>
-  </button>
-  <div class="modal__area" v-if="open">
+
+  <div class="modal__area" @click="open=true">
   <div class="modal__area__content">
     <div class="modal__area__content__close">
-      <button @click="open = false">
+      <button @click="$router.push('/products')">
         <i class="ph-thin ph-x-circle"></i>
       </button>
     </div>
+     
     <div class="modal__area__content__form">
+      
+       
       <form>
-        <label for="name">Name</label>
-        <input type="text" id="name" value="" />
+        
         <label for="phone">Phone</label>
         <input type="text" id="phone" value="" />
         <label for="orders">Orders</label>
         <input type="text" id="orders" value="" />
         <label for="spends">Spends</label>
         <input type="text" id="spends" value="" />
+        <fieldset>
+        <button type="submit">Add</button>
+        <button @click="$router.push('/products')">Cancel</button>
+        </fieldset>
       </form>
     </div>
   </div>

@@ -5,7 +5,9 @@
         <input type="search" name="query" v-model="searchQuery" />
       </div>
       <div class="products__top__add">
-        <Add/>
+          <button @click="$router.push('/add-product')" class="add">
+    <span>Add</span>
+  </button>
       </div>
     </div>
     
@@ -16,7 +18,7 @@
 </template>
 <script setup>
 import Table from '../components/Table.vue'
-import Add from '../components/Add.vue'
+import AddProduct from '../components/AddProduct.vue'
 import {tableData, tableColumns} from '../assets/data/products.js'
 import {ref} from 'vue'
 
