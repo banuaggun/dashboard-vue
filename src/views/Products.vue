@@ -12,18 +12,27 @@
     </div>
     
     <div class="products__table">
-      <Table :data="tableData" :columns="tableColumns" :filter-key="searchQuery" />
+      <ProductsTable />
+     
+      <Table :data="tableData" :columns="tableColumns" :filter-key="searchQuery" :addProduct="addProduct" />
     </div>
   </div>
 </template>
 <script setup>
+import ProductsTable from '../components/ProductsTable.vue'
 import Table from '../components/Table.vue'
 import AddProduct from '../components/AddProduct.vue'
+import products from '../assets/data/products.json'
 import {tableData, tableColumns} from '../assets/data/products.js'
 import {ref} from 'vue'
 
 
 const searchQuery = ref('')
+
+const addProduct = ref('')
+
+
+
 
 </script>
 <style>

@@ -4,7 +4,20 @@ export default {
   components:{BaseInput},
   data() {
     return {
-      open: false
+      open: false,
+      ProductName:'',
+      Price:'',
+      tableData:[]
+    }
+  },
+  methods:{
+    addProduct(){
+      this.tableData.push({
+        ProductName:this.ProductName,
+        Price:this.Price
+      });
+      this.ProductName="";
+      this.Price="";
     }
   }
 }
@@ -23,16 +36,15 @@ export default {
     <div class="modal__area__content__form">
       
        
-      <form>
-        
+      <form @submit.prevent="addProduct">
         <label for="phone">Phone</label>
-        <input type="text" id="phone" value="" />
+        <input type="text" id="phone" v-model="ProductName" />
         <label for="orders">Orders</label>
-        <input type="text" id="orders" value="" />
+        <input type="text" id="orders" v-model="Price" />
         <label for="spends">Spends</label>
         <input type="text" id="spends" value="" />
         <fieldset>
-        <button type="submit">Add</button>
+        <button type="submit" @click="$router.push('/products')">Add</button>
         <button @click="$router.push('/products')">Cancel</button>
         </fieldset>
       </form>

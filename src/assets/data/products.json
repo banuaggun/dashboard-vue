@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "productName":"T-shirt",
+    "content": "A cotton fabric"
+  },
+  {
+    "id":2,
+    "productName":"T-shirt",
+    "content": "A cotton fabric"
+  },
+  {
+    "id":3,
+    "productName":"T-shirt",
+    "content": "A cotton fabric"
+  }
+]
