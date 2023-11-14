@@ -1,5 +1,20 @@
 <template>
     <div>
+        <form style="margin:20px;" @submit.prevent>
+            <label>Name</label>
+            <input type="text" v-model="name" />
+            <br/><br/>
+            <label>Size</label>
+            <input type="number" v-model="size" />
+            <br/><br/>
+            <label>Color</label>
+            <input type="text" v-model="color" />
+            <br/><br/>
+            <label>Price</label>
+            <input type="number" v-model="price" />
+            <br/><br/>
+            <button type="submit" @click="addData()">Add</button>
+        </form>
         <table>
             <thead>
                 <tr>
@@ -17,7 +32,7 @@
                     <td>{{data.color}}</td>
                     <td>{{data.price}}</td>
                     <td>
-                        <button style="margin-right:20px;">Edit</button>
+                        <button style="margin-right:20px;" @click="getData(data.id)">Edit</button>
                         <button>Delete</button>
                     </td>
                 </tr>
@@ -29,6 +44,10 @@
 export default {
     data(){
         return{
+            name:'',
+            size:'',
+            color:'',
+            price:0,
             productObj:[
                 {
                     id:1,
@@ -45,6 +64,26 @@ export default {
                     price:'2000$'
                 }
             ]
+        }
+    },
+    methods:{
+        getData(id){
+            var dataObj = this.productObj.filter(data => (data === data.id))
+            this.name = dataObj[0].name
+            this.size = dataObj[0].size
+            this.color = dataObj[0].color
+            this.price = dataObj[0].price
+        },
+        addData(){
+            
+            const id = this.productObj.length + 1;
+            const data = {
+                name:this.name,
+                color:this.color,
+                size:this.size,
+                price:this.price
+            }
+            this.productObj.push(data);
         }
     }
 }
