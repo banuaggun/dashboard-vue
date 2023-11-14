@@ -5,15 +5,15 @@
             <input type="text" v-model="name" />
             <br/><br/>
             <label>Size</label>
-            <input type="number" v-model="size" />
+            <input type="text" v-model="size" />
             <br/><br/>
             <label>Color</label>
             <input type="text" v-model="color" />
             <br/><br/>
             <label>Price</label>
-            <input type="number" v-model="price" />
+            <input type="text" v-model="price" />
             <br/><br/>
-            <button type="submit" @click="addData()">Add</button>
+            <button type="submit" @click="addData(haveID)">Add</button>
         </form>
         <table>
             <thead>
@@ -48,6 +48,7 @@ export default {
             size:'',
             color:'',
             price:0,
+            haveID:null,
             productObj:[
                 {
                     id:1,
@@ -68,22 +69,33 @@ export default {
     },
     methods:{
         getData(id){
-            var dataObj = this.productObj.filter(data => (data === data.id))
+            this.haveID = id
+            var dataObj = this.productObj.filter(data => (data.id === id))
+            // Assign To Input
             this.name = dataObj[0].name
             this.size = dataObj[0].size
             this.color = dataObj[0].color
             this.price = dataObj[0].price
         },
-        addData(){
-            
-            const id = this.productObj.length + 1;
-            const data = {
-                name:this.name,
-                color:this.color,
-                size:this.size,
-                price:this.price
+        addData(haveID){
+            // Update Data
+            if(haveID){
+                var dataObj = this.productObj.filter(data => (data === haveID))
+                dataObj[0].name = this.name
+                dataObj[0].size = this.size
+                dataObj[0].color = this.color
+                dataObj[0].price = this.price
+            }else{
+                // Add Data
+                const id = this.productObj.length + 1;
+                const data = {
+                    name:this.name,
+                    color:this.color,
+                    size:this.size,
+                    price:this.price
+                }
+                this.productObj.push(data);
             }
-            this.productObj.push(data);
         }
     }
 }
