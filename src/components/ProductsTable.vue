@@ -33,7 +33,7 @@
                     <td>{{data.price}}</td>
                     <td>
                         <button style="margin-right:20px;" @click="getData(data.id)">Edit</button>
-                        <button>Delete</button>
+                        <button @click="deleteData(data.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -68,6 +68,10 @@ export default {
         }
     },
     methods:{
+        deleteData(id){
+            var index = this.productObj.findIndex((data) => data.id === id)
+            this.productObj.splice(index, 1)
+        },
         getData(id){
             this.haveID = id
             var dataObj = this.productObj.filter(data => (data.id === id))
