@@ -13,7 +13,7 @@
             <label>Price</label>
             <input type="text" v-model="price" />
             <br/><br/>
-            <button type="submit" @click="addData(haveID)">Add</button>
+            <button type="submit" @click="addData(haveID);reset();">Add</button>
         </form>
         <table>
             <thead>
@@ -99,7 +99,14 @@ export default {
                     price:this.price
                 }
                 this.productObj.push(data);
+                this.reset();
             }
+        },
+        reset(){
+            this.name = '';
+            this.size = '';
+            this.color = '';
+            this.price = 0;
         }
     }
 }
