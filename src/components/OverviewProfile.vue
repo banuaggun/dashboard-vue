@@ -3,7 +3,7 @@
     <h1>Overview</h1>
     <div class="state">
       <span>Balanced 10% +</span>
-      <Card :name="card.name" />
+      <Card :subTitle="card.subTitle" :name="card.name" class="card" />
     </div>
   </div>
 </template>
@@ -13,11 +13,16 @@ export default {
   components: {Card},
   data: () => ({
     card:{
+      subTitle:'Wallet Instant Status',
       name:'Jane Madelaine'
     }
   })
 }
 </script>
 <style>
+img.card{
+  width:100px;
+  height:100px;
+}
   
 </style>
