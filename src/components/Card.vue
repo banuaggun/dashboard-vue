@@ -31,4 +31,13 @@ export default {
     },
 };
 </script>
-<style></style>
+<style>
+.card{
+  margin:20px;
+  max-width:400px;
+  height:auto;
+  padding:20px 30px;
+  border:1px solid #dcdcdc;
+  border-radius: 12px;
+}
+</style>
