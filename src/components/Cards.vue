@@ -18,18 +18,15 @@ export default {
   props:{
     totalValue:{
       type:String,
-      default:'',
-      required:true
+      default:''
     },
     dayGain:{
       type:String,
-      default:'',
-      required:true
+      default:''
     },
     totalDayGain:{
       type:String,
-      default:'',
-      required:true
+      default:''
     },
   }
 };
