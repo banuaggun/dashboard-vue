@@ -1,6 +1,3 @@
 <template>
-  <main>
-    page
-  </main>
+  statistics
 </template>
-
